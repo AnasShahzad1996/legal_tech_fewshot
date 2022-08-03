@@ -7,6 +7,10 @@ import dataload_fewshot
 from datetime import datetime
 
 
+def log(str):
+	print (str,file=sys.stderr)
+	sys.stderr.flush()
+
 
 config = {
 	"bert_model": "bert-base-uncased",
@@ -49,15 +53,13 @@ def main():
 
 
 	total_dataset,all_sent = sampler_fewshot.gather_all(curr_task,fewshot_config)
-	data_train,data_train_loader= dataload_fewshot.ret_dataloader(total_dataset,all_sent,task_fewshot.KALAMKAR_LABELS,fewshot_config)
+	data_train,data_train_loader= dataload_fewshot.ret_dataloader_per_doc(total_dataset,all_sent,task_fewshot.KALAMKAR_LABELS,fewshot_config)
 
-	print(len(data_train))
+	# define model and optimizer here
 
 	for epoch in range(0,fewshot_config['epochs']):
 		for support_batch,query_batch in data_train_loader:
-			print ("lalalala",support_batch,query_batch)
-			#print (support_batch,query_batch)
-
+			pass
 
 if __name__ == '__main__':
 	main()

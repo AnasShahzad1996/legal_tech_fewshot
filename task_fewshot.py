@@ -280,14 +280,14 @@ class Task:
 
     def _load_full_set(self, file_suffix='scibert'):
         '''Returns one Fold. '''
-        log("Loading tokenized data...")
+        #log("Loading tokenized data...")
         full_examples = DocumentsDataset(os.path.join(self.data_dir, f"full_{file_suffix}.txt"), max_docs=self.max_docs)
-        log("Loading tokenized data finished.")
+        #log("Loading tokenized data finished.")
         return list(full_examples)
 
     def _load_train_dev_test_examples(self, file_suffix='scibert') -> Fold:
 
-        log("Loading tokenized data...")
+        #log("Loading tokenized data...")
         directory_string = self.data_dir + "/"+self.data_to_load
         if self.percenti is None:
             directory_string = directory_string + "/train_format.txt"
@@ -310,14 +310,14 @@ class Task:
 
         train_examples = self.truncate_train_examples(train_examples)
 
-        log("Loading tokenized data finished.")
+        #log("Loading tokenized data finished.")
         return [(train_examples, dev_examples, test_examples)]
 
     def truncate_train_examples(self, train_examples):
         if self.portion_training_data < 1.0:
             train_examples = list(train_examples)
             new_len = int(len(train_examples) * self.portion_training_data)
-            log(f"Truncating training examples with factor {self.portion_training_data} from {len(train_examples)} to {new_len}")
+            #log(f"Truncating training examples with factor {self.portion_training_data} from {len(train_examples)} to {new_len}")
             train_examples = train_examples[0: new_len]
         return train_examples
 
@@ -339,7 +339,7 @@ class Task:
         if self.folds_examples is not None:
             return self.folds_examples
         self.folds_examples = []
-        log(f"Loading data with {self.num_folds} folds...")
+        #log(f"Loading data with {self.num_folds} folds...")
         if self.num_folds == 1:
             self.folds_examples = self._load_train_dev_test_examples(file_suffix=file_suffix)
         else:
@@ -363,14 +363,14 @@ class Task:
 
         folds_examples = self.get_folds_examples()
         self.folds = []
-        log(f"Creating batches for {self.num_folds} folds...")
+        #log(f"Creating batches for {self.num_folds} folds...")
         for train, dev, test in folds_examples:
             train_batches = self._get_batches(train)
             dev_batches = self._get_batches(dev)
             test_batches = self._get_batches(test)
 
             self.folds.append(Fold(train_batches, dev_batches, test_batches))
-        log(f"Creating batches finished.")
+        #log(f"Creating batches finished.")
         return self.folds
 
     def get_stats_counts(self):

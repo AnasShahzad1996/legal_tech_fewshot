@@ -18,8 +18,7 @@ config_dataloader ={
 }
 
 
-
-class FewShotDataset(Dataset):
+class FewShotDataset_per_doc(Dataset):
 	def __init__(self, total_dataset, all_sent,classes,config):
 		super(Dataset, self).__init__()
 		print ("Initializing the dataset")
@@ -34,8 +33,6 @@ class FewShotDataset(Dataset):
 		self.config = config
 
 
-		self.max_sent = 0
-
 		# train generator 
 		train_generator = task_fewshot.DocumentsDataset('datasets/kalamkar/inter/train_format.txt',max_docs=-1)
 		self.train_examples = []
@@ -43,94 +40,94 @@ class FewShotDataset(Dataset):
 			self.train_examples.append(i)
 
 
-		# dev generator
-		dev_generator = task_fewshot.DocumentsDataset('datasets/kalamkar/inter/dev_format.txt',max_docs=-1)
-		self.dev_examples = []
-		for i in dev_generator:
-			self.dev_examples.append(i)
-
-		# test generator
-		test_generator = task_fewshot.DocumentsDataset('datasets/kalamkar/inter/dev_format.txt',max_docs=-1)
-		self.test_examples = []
-		for i in test_generator:
-			self.test_examples.append(i)
-
-		#print ('mein dhoondney ko zamanay mein',self.train_examples[0].sentences[0])
-
-		self.class2sent = {}
-		for i in task_fewshot.KALAMKAR_LABELS:
-			self.class2sent[i] = []
-
-		for doc_index,curr_doc in enumerate(self.train_examples):
-			for indexi,curr_sent in enumerate(self.train_examples[doc_index].sentences):
-				mapped_class = self.train_examples[doc_index].labels[indexi]
-				self.class2sent[mapped_class].append({'document':doc_index,'sentence':indexi})
-				if len(self.train_examples[doc_index].sentences[indexi]) > self.max_sent:
-					self.max_sent = len(self.train_examples[doc_index].sentences[indexi])
-				self.max_len += 1
-
-		self.max_len = int(self.max_len/config['max_exam'])
-
-
-
 	def __len__(self):
-		return 1
-		return self.max_len
+		return int(len(self.train_examples)/2)
 
 	def __getitem__(self, index):
-		## move this to either get_item or another function likee get+bash
-		self.support_sentences = []
-		self.support_labels = []
 
-		for keyi in self.class2sent.keys():
-			sent2choose = np.random.randint(1,high=self.config['max_exam'],size=1)
-			length_sent = range(0,len(self.class2sent[keyi]))
+		# first half is the support set while the second half is the query set
+		support_index = index
+		query_index = index + int(len(self.train_examples)/2)
 
-			random_ind = np.random.choice(length_sent,sent2choose)
-			sent2choosemap = np.array(self.class2sent[keyi])[random_ind]
-			for curr_sent in sent2choosemap:
-				self.support_sentences.append(self.train_examples[curr_sent['document']].sentences[curr_sent['sentence']])
-				self.support_labels.append(self.train_examples[curr_sent['document']].labels[curr_sent['sentence']])		# ignore the index
+
+		self.support_sentences 	= list(self.train_examples[support_index].sentences)
+		self.support_labels 	= list(self.train_examples[support_index].labels)
+		support_batch 			= {"sentence_mask":1,"attention_mask":[],"input_ids":[],"label_ids":[]}
+
+
+		max_sent_per_label 		= 5
+		support_track_class 	= {}
+		for curr_task in task_fewshot.KALAMKAR_LABELS:
+			support_track_class[curr_task] = 0
+
 		
 
-		token_ids = []
-		attention_masks = []
-		label_ids = []
-		for sentence, label in zip(self.support_sentences, self.support_labels):
-			# sentence already tokenized
-			if isinstance(sentence, list):
-				tok_ids = sentence
+
+		for curr_sent,curr_label in zip(self.support_sentences,self.support_labels):
+			if support_track_class[curr_label] == 0:
+				curr_ids = [int(t) for t in curr_sent.split()]
+				support_batch["input_ids"].append(curr_ids)
+				support_batch["label_ids"].append(curr_label)
+				support_batch["attention_mask"].append(([1] * len(curr_ids)))
+				support_track_class[curr_label] = support_track_class[curr_label] + 1
+			elif support_track_class[curr_label] >= max_sent_per_label:
+				pass
 			else:
-				tok_ids = [int(t) for t in sentence.split()]
-			attention_mask = [1] * len(tok_ids)
-
-			# map label id
-			label_id = task_fewshot.KALAMKAR_LABELS.index(label)
-
-
-			token_ids.append(tok_ids)
-			attention_masks.append(attention_mask)
-			label_ids.append(label_id)
+				random_ch = np.random.randint(10)
+				if random_ch % 2 == 0:
+					curr_ids = [int(t) for t in curr_sent.split()]
+					support_batch["input_ids"].append(curr_ids)
+					support_batch["label_ids"].append(curr_label)
+					support_batch["attention_mask"].append(([1] * len(curr_ids)))
+					support_track_class[curr_label] = support_track_class[curr_label] + 1
 
 
+		support_batch["sentence_mask"] : pad_sequence_to_length([1]*len(support_batch["input_ids"]),desired_length=len(support_batch["input_ids"]))
 
-		support_batch = {
-		    "sentence_mask": pad_sequence_to_length([1] * len(token_ids), desired_length=self.max_sent),
-            "input_ids": token_ids,
-            "attention_mask": attention_masks,
-            "label_ids": label_ids
-        }
-		query_batch = {}
+
+		# constructing the query batch
+		query_batch 			= {}
+		self.query_sentences 	= list(self.train_examples[query_index].sentences)
+		self.query_labels 	= list(self.train_examples[query_index].labels)
+		query_batch 			= {"sentence_mask":1,"attention_mask":[],"input_ids":[],"label_ids":[]}
+
+
+		max_sent_per_label 		= 5
+		query_track_class 	= {}
+		for curr_task in task_fewshot.KALAMKAR_LABELS:
+			query_track_class[curr_task] = 0
+
+		for curr_sent,curr_label in zip(self.query_sentences,self.query_labels):
+			if query_track_class[curr_label] == 0:
+				curr_ids = [int(t) for t in curr_sent.split()]
+				query_batch["input_ids"].append(curr_ids)
+				query_batch["label_ids"].append(curr_label)
+				query_batch["attention_mask"].append(([1] * len(curr_ids)))
+				query_track_class[curr_label] = query_track_class[curr_label] + 1
+			elif query_track_class[curr_label] >= max_sent_per_label:
+				pass
+			else:
+				random_ch = np.random.randint(10)
+				if random_ch % 2 == 0:
+					curr_ids = [int(t) for t in curr_sent.split()]
+					query_batch["input_ids"].append(curr_ids)
+					query_batch["label_ids"].append(curr_label)
+					query_batch["attention_mask"].append(([1] * len(curr_ids)))
+					query_track_class[curr_label] = query_track_class[curr_label] + 1
+
+
+		query_batch["sentence_mask"] : pad_sequence_to_length([1]*len(query_batch["input_ids"]),desired_length=len(query_batch["input_ids"]))
+
+
+
 
 
 		return support_batch,query_batch
 
 
 
-def ret_dataloader(total_dataset,all_sent,classes,config):
-	data_train = FewShotDataset(total_dataset,all_sent, classes,config)
+def ret_dataloader_per_doc(total_dataset,all_sent,classes,config):
+	data_train = FewShotDataset_per_doc(total_dataset,all_sent, classes,config)
 	data_train_loader = DataLoader(data_train, batch_size=config_dataloader['batch_size'])
 	return data_train,data_train_loader
-
-
 
