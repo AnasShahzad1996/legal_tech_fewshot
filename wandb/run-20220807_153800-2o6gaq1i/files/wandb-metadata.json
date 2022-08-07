@@ -1,0 +1,29 @@
+{
+    "os": "Linux-5.15.0-43-generic-x86_64-with-glibc2.35",
+    "python": "3.9.12",
+    "heartbeatAt": "2022-08-07T13:38:02.131746",
+    "startedAt": "2022-08-07T13:38:00.486219",
+    "docker": null,
+    "cpu_count": 4,
+    "cuda": null,
+    "args": [
+        "-c",
+        "config_bert_2_way",
+        "-m",
+        "ProtoBert",
+        "-o",
+        "training_debug"
+    ],
+    "state": "running",
+    "program": "/home/anas1/Desktop/legal_data_science/legal_tech/legal_tech_fewshot/baseline_train.py",
+    "codePath": "baseline_train.py",
+    "git": {
+        "remote": "https://github.com/AnasShahzad1996/legal_tech_fewshot.git",
+        "commit": "d5ff9f1dacaab0222bfff8ccc5c415cd1c7e9379"
+    },
+    "email": "19100097@lums.edu.pk",
+    "root": "/home/anas1/Desktop/legal_data_science/legal_tech/legal_tech_fewshot",
+    "host": "anas1-HP-Pro-x2-612-G1-Tablet",
+    "username": "anas1",
+    "executable": "/home/anas1/anaconda3/envs/legal_env/bin/python"
+}

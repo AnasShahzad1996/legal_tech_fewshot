@@ -1,0 +1,20 @@
+
+Epoch number :  1
+Traceback (most recent call last):
+  File "/home/anas1/Desktop/legal_data_science/legal_tech/legal_tech_fewshot/baseline_train.py", line 87, in <module>
+    myfunc(sys.argv)
+  File "/home/anas1/Desktop/legal_data_science/legal_tech/legal_tech_fewshot/baseline_train.py", line 75, in myfunc
+    model, metric  = train_fewshot.train(config, model,optimizer_func,scheduler,train_dataloader,validation_dataloader)
+  File "/home/anas1/Desktop/legal_data_science/legal_tech/legal_tech_fewshot/train_fewshot.py", line 25, in train
+    for support_batch,query_batch,every_class_present in train_dataloader:
+  File "/home/anas1/anaconda3/envs/legal_env/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 521, in __next__
+    data = self._next_data()
+  File "/home/anas1/anaconda3/envs/legal_env/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 561, in _next_data
+    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
+  File "/home/anas1/anaconda3/envs/legal_env/lib/python3.9/site-packages/torch/utils/data/_utils/fetch.py", line 44, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/anas1/anaconda3/envs/legal_env/lib/python3.9/site-packages/torch/utils/data/_utils/fetch.py", line 44, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/anas1/Desktop/legal_data_science/legal_tech/legal_tech_fewshot/utils/dataload_fewshot.py", line 46, in __getitem__
+    max_sent_per_label		= config["max_sent"]
+NameError: name 'config' is not defined

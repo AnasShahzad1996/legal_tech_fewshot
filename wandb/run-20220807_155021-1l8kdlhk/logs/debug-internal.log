@@ -1,0 +1,150 @@
+2022-08-07 15:50:22,399 INFO    MainThread:38259 [internal.py:wandb_internal():86] W&B internal server running at pid: 38259, started at: 2022-08-07 15:50:22.399163
+2022-08-07 15:50:22,402 DEBUG   HandlerThread:38259 [handler.py:handle_request():126] handle_request: check_version
+2022-08-07 15:50:22,402 INFO    WriterThread:38259 [datastore.py:open_for_write():77] open: /home/anas1/Desktop/legal_data_science/legal_tech/legal_tech_fewshot/wandb/run-20220807_155021-1l8kdlhk/run-1l8kdlhk.wandb
+2022-08-07 15:50:22,405 DEBUG   SenderThread:38259 [sender.py:send():182] send: header
+2022-08-07 15:50:22,405 DEBUG   SenderThread:38259 [sender.py:send_request():196] send_request: check_version
+2022-08-07 15:50:22,506 DEBUG   SenderThread:38259 [sender.py:send():182] send: run
+2022-08-07 15:50:22,792 INFO    SenderThread:38259 [dir_watcher.py:__init__():169] watching files in: /home/anas1/Desktop/legal_data_science/legal_tech/legal_tech_fewshot/wandb/run-20220807_155021-1l8kdlhk/files
+2022-08-07 15:50:22,792 INFO    SenderThread:38259 [sender.py:_start_run_threads():740] run started: 1l8kdlhk with start time 1659880221
+2022-08-07 15:50:22,793 DEBUG   SenderThread:38259 [sender.py:send():182] send: summary
+2022-08-07 15:50:22,793 INFO    SenderThread:38259 [sender.py:_save_file():873] saving file wandb-summary.json with policy end
+2022-08-07 15:50:22,793 DEBUG   HandlerThread:38259 [handler.py:handle_request():126] handle_request: run_start
+2022-08-07 15:50:22,795 DEBUG   HandlerThread:38259 [meta.py:__init__():40] meta init
+2022-08-07 15:50:22,796 DEBUG   HandlerThread:38259 [meta.py:__init__():54] meta init done
+2022-08-07 15:50:22,796 DEBUG   HandlerThread:38259 [meta.py:probe():211] probe
+2022-08-07 15:50:22,797 DEBUG   HandlerThread:38259 [meta.py:_setup_git():201] setup git
+2022-08-07 15:50:22,816 DEBUG   HandlerThread:38259 [meta.py:_setup_git():208] setup git done
+2022-08-07 15:50:22,816 DEBUG   HandlerThread:38259 [meta.py:_save_pip():58] save pip
+2022-08-07 15:50:22,817 DEBUG   HandlerThread:38259 [meta.py:_save_pip():72] save pip done
+2022-08-07 15:50:22,817 DEBUG   HandlerThread:38259 [meta.py:_save_conda():79] save conda
+2022-08-07 15:50:23,796 INFO    Thread-8  :38259 [dir_watcher.py:_on_file_created():217] file/dir created: /home/anas1/Desktop/legal_data_science/legal_tech/legal_tech_fewshot/wandb/run-20220807_155021-1l8kdlhk/files/wandb-summary.json
+2022-08-07 15:50:23,797 INFO    Thread-8  :38259 [dir_watcher.py:_on_file_created():217] file/dir created: /home/anas1/Desktop/legal_data_science/legal_tech/legal_tech_fewshot/wandb/run-20220807_155021-1l8kdlhk/files/conda-environment.yaml
+2022-08-07 15:50:23,797 INFO    Thread-8  :38259 [dir_watcher.py:_on_file_created():217] file/dir created: /home/anas1/Desktop/legal_data_science/legal_tech/legal_tech_fewshot/wandb/run-20220807_155021-1l8kdlhk/files/requirements.txt
+2022-08-07 15:50:27,794 INFO    Thread-8  :38259 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/anas1/Desktop/legal_data_science/legal_tech/legal_tech_fewshot/wandb/run-20220807_155021-1l8kdlhk/files/conda-environment.yaml
+2022-08-07 15:50:27,935 DEBUG   HandlerThread:38259 [meta.py:_save_conda():87] save conda done
+2022-08-07 15:50:27,935 DEBUG   HandlerThread:38259 [meta.py:probe():249] probe done
+2022-08-07 15:50:27,940 DEBUG   HandlerThread:38259 [handler.py:handle_request():126] handle_request: stop_status
+2022-08-07 15:50:27,941 DEBUG   SenderThread:38259 [sender.py:send_request():196] send_request: stop_status
+2022-08-07 15:50:28,213 DEBUG   SenderThread:38259 [sender.py:send():182] send: files
+2022-08-07 15:50:28,214 INFO    SenderThread:38259 [sender.py:_save_file():873] saving file wandb-metadata.json with policy now
+2022-08-07 15:50:28,796 INFO    Thread-8  :38259 [dir_watcher.py:_on_file_created():217] file/dir created: /home/anas1/Desktop/legal_data_science/legal_tech/legal_tech_fewshot/wandb/run-20220807_155021-1l8kdlhk/files/wandb-metadata.json
+2022-08-07 15:50:28,797 INFO    Thread-8  :38259 [dir_watcher.py:_on_file_created():217] file/dir created: /home/anas1/Desktop/legal_data_science/legal_tech/legal_tech_fewshot/wandb/run-20220807_155021-1l8kdlhk/files/output.log
+2022-08-07 15:50:28,935 INFO    Thread-11 :38259 [upload_job.py:push():137] Uploaded file /tmp/tmpz0y91nl3wandb/3inc98xl-wandb-metadata.json
+2022-08-07 15:50:29,797 INFO    Thread-8  :38259 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/anas1/Desktop/legal_data_science/legal_tech/legal_tech_fewshot/wandb/run-20220807_155021-1l8kdlhk/files/output.log
+2022-08-07 15:50:30,316 DEBUG   HandlerThread:38259 [handler.py:handle_request():126] handle_request: poll_exit
+2022-08-07 15:50:30,316 DEBUG   SenderThread:38259 [sender.py:send():182] send: telemetry
+2022-08-07 15:50:30,316 DEBUG   SenderThread:38259 [sender.py:send():182] send: exit
+2022-08-07 15:50:30,316 INFO    SenderThread:38259 [sender.py:send_exit():291] handling exit code: 1
+2022-08-07 15:50:30,317 INFO    SenderThread:38259 [sender.py:send_exit():293] handling runtime: 7
+2022-08-07 15:50:30,317 INFO    SenderThread:38259 [sender.py:_save_file():873] saving file wandb-summary.json with policy end
+2022-08-07 15:50:30,317 INFO    SenderThread:38259 [sender.py:send_exit():303] send defer
+2022-08-07 15:50:30,318 DEBUG   SenderThread:38259 [sender.py:send_request():196] send_request: poll_exit
+2022-08-07 15:50:30,318 DEBUG   HandlerThread:38259 [handler.py:handle_request():126] handle_request: defer
+2022-08-07 15:50:30,319 INFO    HandlerThread:38259 [handler.py:handle_request_defer():143] handle defer: 0
+2022-08-07 15:50:30,319 DEBUG   SenderThread:38259 [sender.py:send_request():196] send_request: defer
+2022-08-07 15:50:30,319 INFO    SenderThread:38259 [sender.py:send_request_defer():312] handle sender defer: 0
+2022-08-07 15:50:30,319 INFO    SenderThread:38259 [sender.py:transition_state():316] send defer: 1
+2022-08-07 15:50:30,320 DEBUG   HandlerThread:38259 [handler.py:handle_request():126] handle_request: defer
+2022-08-07 15:50:30,320 INFO    HandlerThread:38259 [handler.py:handle_request_defer():143] handle defer: 1
+2022-08-07 15:50:30,422 DEBUG   SenderThread:38259 [sender.py:send_request():196] send_request: defer
+2022-08-07 15:50:30,422 DEBUG   HandlerThread:38259 [handler.py:handle_request():126] handle_request: poll_exit
+2022-08-07 15:50:30,422 INFO    SenderThread:38259 [sender.py:send_request_defer():312] handle sender defer: 1
+2022-08-07 15:50:30,423 INFO    SenderThread:38259 [sender.py:transition_state():316] send defer: 2
+2022-08-07 15:50:30,423 DEBUG   SenderThread:38259 [sender.py:send_request():196] send_request: poll_exit
+2022-08-07 15:50:30,424 DEBUG   SenderThread:38259 [sender.py:send():182] send: stats
+2022-08-07 15:50:30,424 DEBUG   HandlerThread:38259 [handler.py:handle_request():126] handle_request: defer
+2022-08-07 15:50:30,425 INFO    HandlerThread:38259 [handler.py:handle_request_defer():143] handle defer: 2
+2022-08-07 15:50:30,425 DEBUG   SenderThread:38259 [sender.py:send_request():196] send_request: defer
+2022-08-07 15:50:30,425 INFO    SenderThread:38259 [sender.py:send_request_defer():312] handle sender defer: 2
+2022-08-07 15:50:30,425 INFO    SenderThread:38259 [sender.py:transition_state():316] send defer: 3
+2022-08-07 15:50:30,425 DEBUG   HandlerThread:38259 [handler.py:handle_request():126] handle_request: defer
+2022-08-07 15:50:30,426 INFO    HandlerThread:38259 [handler.py:handle_request_defer():143] handle defer: 3
+2022-08-07 15:50:30,426 DEBUG   SenderThread:38259 [sender.py:send():182] send: summary
+2022-08-07 15:50:30,426 INFO    SenderThread:38259 [sender.py:_save_file():873] saving file wandb-summary.json with policy end
+2022-08-07 15:50:30,427 DEBUG   SenderThread:38259 [sender.py:send_request():196] send_request: defer
+2022-08-07 15:50:30,427 INFO    SenderThread:38259 [sender.py:send_request_defer():312] handle sender defer: 3
+2022-08-07 15:50:30,427 INFO    SenderThread:38259 [sender.py:transition_state():316] send defer: 4
+2022-08-07 15:50:30,427 DEBUG   HandlerThread:38259 [handler.py:handle_request():126] handle_request: defer
+2022-08-07 15:50:30,427 INFO    HandlerThread:38259 [handler.py:handle_request_defer():143] handle defer: 4
+2022-08-07 15:50:30,428 DEBUG   SenderThread:38259 [sender.py:send_request():196] send_request: defer
+2022-08-07 15:50:30,428 INFO    SenderThread:38259 [sender.py:send_request_defer():312] handle sender defer: 4
+2022-08-07 15:50:30,525 DEBUG   HandlerThread:38259 [handler.py:handle_request():126] handle_request: poll_exit
+2022-08-07 15:50:30,640 INFO    SenderThread:38259 [sender.py:transition_state():316] send defer: 5
+2022-08-07 15:50:30,640 DEBUG   SenderThread:38259 [sender.py:send_request():196] send_request: poll_exit
+2022-08-07 15:50:30,641 DEBUG   HandlerThread:38259 [handler.py:handle_request():126] handle_request: defer
+2022-08-07 15:50:30,641 INFO    HandlerThread:38259 [handler.py:handle_request_defer():143] handle defer: 5
+2022-08-07 15:50:30,642 DEBUG   SenderThread:38259 [sender.py:send_request():196] send_request: defer
+2022-08-07 15:50:30,642 INFO    SenderThread:38259 [sender.py:send_request_defer():312] handle sender defer: 5
+2022-08-07 15:50:30,642 INFO    SenderThread:38259 [dir_watcher.py:finish():283] shutting down directory watcher
+2022-08-07 15:50:30,744 DEBUG   HandlerThread:38259 [handler.py:handle_request():126] handle_request: poll_exit
+2022-08-07 15:50:30,798 INFO    Thread-8  :38259 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/anas1/Desktop/legal_data_science/legal_tech/legal_tech_fewshot/wandb/run-20220807_155021-1l8kdlhk/files/wandb-summary.json
+2022-08-07 15:50:30,798 INFO    SenderThread:38259 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/anas1/Desktop/legal_data_science/legal_tech/legal_tech_fewshot/wandb/run-20220807_155021-1l8kdlhk/files/config.yaml
+2022-08-07 15:50:30,799 INFO    SenderThread:38259 [dir_watcher.py:_on_file_modified():230] file/dir modified: /home/anas1/Desktop/legal_data_science/legal_tech/legal_tech_fewshot/wandb/run-20220807_155021-1l8kdlhk/files/output.log
+2022-08-07 15:50:30,799 INFO    SenderThread:38259 [dir_watcher.py:finish():313] scan: /home/anas1/Desktop/legal_data_science/legal_tech/legal_tech_fewshot/wandb/run-20220807_155021-1l8kdlhk/files
+2022-08-07 15:50:30,799 INFO    SenderThread:38259 [dir_watcher.py:finish():327] scan save: /home/anas1/Desktop/legal_data_science/legal_tech/legal_tech_fewshot/wandb/run-20220807_155021-1l8kdlhk/files/config.yaml config.yaml
+2022-08-07 15:50:30,799 INFO    SenderThread:38259 [dir_watcher.py:finish():327] scan save: /home/anas1/Desktop/legal_data_science/legal_tech/legal_tech_fewshot/wandb/run-20220807_155021-1l8kdlhk/files/output.log output.log
+2022-08-07 15:50:30,800 INFO    SenderThread:38259 [dir_watcher.py:finish():327] scan save: /home/anas1/Desktop/legal_data_science/legal_tech/legal_tech_fewshot/wandb/run-20220807_155021-1l8kdlhk/files/conda-environment.yaml conda-environment.yaml
+2022-08-07 15:50:30,800 INFO    SenderThread:38259 [dir_watcher.py:finish():327] scan save: /home/anas1/Desktop/legal_data_science/legal_tech/legal_tech_fewshot/wandb/run-20220807_155021-1l8kdlhk/files/requirements.txt requirements.txt
+2022-08-07 15:50:30,809 INFO    SenderThread:38259 [dir_watcher.py:finish():327] scan save: /home/anas1/Desktop/legal_data_science/legal_tech/legal_tech_fewshot/wandb/run-20220807_155021-1l8kdlhk/files/wandb-summary.json wandb-summary.json
+2022-08-07 15:50:30,809 INFO    SenderThread:38259 [dir_watcher.py:finish():327] scan save: /home/anas1/Desktop/legal_data_science/legal_tech/legal_tech_fewshot/wandb/run-20220807_155021-1l8kdlhk/files/wandb-metadata.json wandb-metadata.json
+2022-08-07 15:50:30,810 INFO    SenderThread:38259 [sender.py:transition_state():316] send defer: 6
+2022-08-07 15:50:30,815 DEBUG   SenderThread:38259 [sender.py:send_request():196] send_request: poll_exit
+2022-08-07 15:50:30,821 DEBUG   HandlerThread:38259 [handler.py:handle_request():126] handle_request: defer
+2022-08-07 15:50:30,826 INFO    HandlerThread:38259 [handler.py:handle_request_defer():143] handle defer: 6
+2022-08-07 15:50:30,826 DEBUG   SenderThread:38259 [sender.py:send_request():196] send_request: defer
+2022-08-07 15:50:30,827 INFO    SenderThread:38259 [sender.py:send_request_defer():312] handle sender defer: 6
+2022-08-07 15:50:30,827 INFO    SenderThread:38259 [file_pusher.py:finish():177] shutting down file pusher
+2022-08-07 15:50:30,923 DEBUG   HandlerThread:38259 [handler.py:handle_request():126] handle_request: poll_exit
+2022-08-07 15:50:30,923 DEBUG   SenderThread:38259 [sender.py:send_request():196] send_request: poll_exit
+2022-08-07 15:50:31,025 DEBUG   HandlerThread:38259 [handler.py:handle_request():126] handle_request: poll_exit
+2022-08-07 15:50:31,025 DEBUG   SenderThread:38259 [sender.py:send_request():196] send_request: poll_exit
+2022-08-07 15:50:31,127 DEBUG   HandlerThread:38259 [handler.py:handle_request():126] handle_request: poll_exit
+2022-08-07 15:50:31,128 DEBUG   SenderThread:38259 [sender.py:send_request():196] send_request: poll_exit
+2022-08-07 15:50:31,229 DEBUG   HandlerThread:38259 [handler.py:handle_request():126] handle_request: poll_exit
+2022-08-07 15:50:31,230 DEBUG   SenderThread:38259 [sender.py:send_request():196] send_request: poll_exit
+2022-08-07 15:50:31,332 DEBUG   HandlerThread:38259 [handler.py:handle_request():126] handle_request: poll_exit
+2022-08-07 15:50:31,332 DEBUG   SenderThread:38259 [sender.py:send_request():196] send_request: poll_exit
+2022-08-07 15:50:31,434 DEBUG   HandlerThread:38259 [handler.py:handle_request():126] handle_request: poll_exit
+2022-08-07 15:50:31,435 DEBUG   SenderThread:38259 [sender.py:send_request():196] send_request: poll_exit
+2022-08-07 15:50:31,537 DEBUG   HandlerThread:38259 [handler.py:handle_request():126] handle_request: poll_exit
+2022-08-07 15:50:31,537 DEBUG   SenderThread:38259 [sender.py:send_request():196] send_request: poll_exit
+2022-08-07 15:50:31,604 INFO    Thread-13 :38259 [upload_job.py:push():137] Uploaded file /home/anas1/Desktop/legal_data_science/legal_tech/legal_tech_fewshot/wandb/run-20220807_155021-1l8kdlhk/files/output.log
+2022-08-07 15:50:31,605 INFO    Thread-14 :38259 [upload_job.py:push():137] Uploaded file /home/anas1/Desktop/legal_data_science/legal_tech/legal_tech_fewshot/wandb/run-20220807_155021-1l8kdlhk/files/conda-environment.yaml
+2022-08-07 15:50:31,606 INFO    Thread-15 :38259 [upload_job.py:push():137] Uploaded file /home/anas1/Desktop/legal_data_science/legal_tech/legal_tech_fewshot/wandb/run-20220807_155021-1l8kdlhk/files/requirements.txt
+2022-08-07 15:50:31,608 INFO    Thread-16 :38259 [upload_job.py:push():137] Uploaded file /home/anas1/Desktop/legal_data_science/legal_tech/legal_tech_fewshot/wandb/run-20220807_155021-1l8kdlhk/files/wandb-summary.json
+2022-08-07 15:50:31,614 INFO    Thread-12 :38259 [upload_job.py:push():137] Uploaded file /home/anas1/Desktop/legal_data_science/legal_tech/legal_tech_fewshot/wandb/run-20220807_155021-1l8kdlhk/files/config.yaml
+2022-08-07 15:50:31,639 DEBUG   HandlerThread:38259 [handler.py:handle_request():126] handle_request: poll_exit
+2022-08-07 15:50:31,639 DEBUG   SenderThread:38259 [sender.py:send_request():196] send_request: poll_exit
+2022-08-07 15:50:31,743 DEBUG   HandlerThread:38259 [handler.py:handle_request():126] handle_request: poll_exit
+2022-08-07 15:50:31,744 DEBUG   SenderThread:38259 [sender.py:send_request():196] send_request: poll_exit
+2022-08-07 15:50:31,816 INFO    Thread-7  :38259 [sender.py:transition_state():316] send defer: 7
+2022-08-07 15:50:31,817 DEBUG   HandlerThread:38259 [handler.py:handle_request():126] handle_request: defer
+2022-08-07 15:50:31,817 INFO    HandlerThread:38259 [handler.py:handle_request_defer():143] handle defer: 7
+2022-08-07 15:50:31,817 DEBUG   SenderThread:38259 [sender.py:send_request():196] send_request: defer
+2022-08-07 15:50:31,818 INFO    SenderThread:38259 [sender.py:send_request_defer():312] handle sender defer: 7
+2022-08-07 15:50:31,847 DEBUG   HandlerThread:38259 [handler.py:handle_request():126] handle_request: poll_exit
+2022-08-07 15:50:32,085 INFO    SenderThread:38259 [sender.py:transition_state():316] send defer: 8
+2022-08-07 15:50:32,085 DEBUG   SenderThread:38259 [sender.py:send_request():196] send_request: poll_exit
+2022-08-07 15:50:32,086 DEBUG   HandlerThread:38259 [handler.py:handle_request():126] handle_request: defer
+2022-08-07 15:50:32,087 INFO    HandlerThread:38259 [handler.py:handle_request_defer():143] handle defer: 8
+2022-08-07 15:50:32,087 DEBUG   SenderThread:38259 [sender.py:send_request():196] send_request: defer
+2022-08-07 15:50:32,088 INFO    SenderThread:38259 [sender.py:send_request_defer():312] handle sender defer: 8
+2022-08-07 15:50:32,088 INFO    SenderThread:38259 [sender.py:transition_state():316] send defer: 9
+2022-08-07 15:50:32,090 DEBUG   HandlerThread:38259 [handler.py:handle_request():126] handle_request: defer
+2022-08-07 15:50:32,091 DEBUG   SenderThread:38259 [sender.py:send():182] send: final
+2022-08-07 15:50:32,091 INFO    HandlerThread:38259 [handler.py:handle_request_defer():143] handle defer: 9
+2022-08-07 15:50:32,092 DEBUG   SenderThread:38259 [sender.py:send():182] send: footer
+2022-08-07 15:50:32,092 DEBUG   SenderThread:38259 [sender.py:send_request():196] send_request: defer
+2022-08-07 15:50:32,092 INFO    SenderThread:38259 [sender.py:send_request_defer():312] handle sender defer: 9
+2022-08-07 15:50:32,188 DEBUG   HandlerThread:38259 [handler.py:handle_request():126] handle_request: poll_exit
+2022-08-07 15:50:32,188 DEBUG   SenderThread:38259 [sender.py:send_request():196] send_request: poll_exit
+2022-08-07 15:50:32,189 INFO    SenderThread:38259 [file_pusher.py:join():182] waiting for file pusher
+2022-08-07 15:50:32,191 DEBUG   HandlerThread:38259 [handler.py:handle_request():126] handle_request: get_summary
+2022-08-07 15:50:32,192 DEBUG   HandlerThread:38259 [handler.py:handle_request():126] handle_request: sampled_history
+2022-08-07 15:50:32,194 DEBUG   HandlerThread:38259 [handler.py:handle_request():126] handle_request: shutdown
+2022-08-07 15:50:32,194 INFO    HandlerThread:38259 [handler.py:finish():683] shutting down handler
+2022-08-07 15:50:33,092 INFO    WriterThread:38259 [datastore.py:close():281] close: /home/anas1/Desktop/legal_data_science/legal_tech/legal_tech_fewshot/wandb/run-20220807_155021-1l8kdlhk/run-1l8kdlhk.wandb
+2022-08-07 15:50:33,189 INFO    SenderThread:38259 [sender.py:finish():979] shutting down sender
+2022-08-07 15:50:33,190 INFO    SenderThread:38259 [file_pusher.py:finish():177] shutting down file pusher
+2022-08-07 15:50:33,190 INFO    SenderThread:38259 [file_pusher.py:join():182] waiting for file pusher
+2022-08-07 15:50:33,193 INFO    MainThread:38259 [internal.py:handle_exit():76] Internal process exited
