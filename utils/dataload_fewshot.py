@@ -19,7 +19,7 @@ class FewShotDataset_per_doc(Dataset):
 	def __init__(self,config,dataset_str):
 		super(Dataset, self).__init__()
 		self.config = config
-		print (self.config)
+		
 
 		# train generator 
 		train_generator = task_fewshot.DocumentsDataset(dataset_str,max_docs=-1)
@@ -80,7 +80,7 @@ class FewShotDataset_per_doc(Dataset):
 		# constructing the query batch
 		query_batch 			= {}
 		self.query_sentences 	= list(self.train_examples[query_index].sentences)
-		self.query_labels 	= list(self.train_examples[query_index].labels)
+		self.query_labels 		= list(self.train_examples[query_index].labels)
 		query_batch 			= {"sentence_mask":1,"attention_mask":[],"input_ids":[],"label_ids":[]}
 
 

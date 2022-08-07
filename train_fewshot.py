@@ -6,8 +6,8 @@ import sys
 sys.path.insert(1,'configs')
 sys.path.insert(0,'models')
 
-#import wandb
-
+import wandb
+import torch
 
 
 def validate(config, model,validation_dataloader):
@@ -19,9 +19,9 @@ def validate(config, model,validation_dataloader):
 
 def train(config, model,optimizer_func,scheduler,train_dataloader,validation_dataloader):
 	metrics = {}
-	#wandb.init(project=config["project_name"])
+	wandb.init(project=config["project_name"])
 	
-
+	print (model)
 
 	curr_iter = 0
 	curr_train_loss = 0.0
@@ -37,9 +37,17 @@ def train(config, model,optimizer_func,scheduler,train_dataloader,validation_dat
 				curr_iter += 1
 
 				model.train()
-				logits,pred = model.forward(support_batch,query_batch)
-				loss = model.custom_loss(logits,query_batch["label_ids"])
+				pred,logits = model.forward(support_batch,query_batch)
+				ylabel 		= model.onehot_encoder(query_batch["label_ids"])
+				print ("logits : ",logits)
+				print ("ylabel : ",ylabel)
+				print ("pred :",pred)
+				loss = model.custom_loss(logits,ylabel.long()) / config["grad_iter"]
 				loss.backward()
+				
+				mask = pred.long() == ylabel.long()
+				accuracy = (torch.sum(mask) *100)/ len(pred)
+				wandb.log({"loss": loss,'accuracy':accuracy})
 
 
 				if curr_iter % config["grad_iter"] == 0:
@@ -49,7 +57,7 @@ def train(config, model,optimizer_func,scheduler,train_dataloader,validation_dat
 					#validation(config,model,validation_dataloader) 
 
 
-				return model,metrics
+				
 
 
 
