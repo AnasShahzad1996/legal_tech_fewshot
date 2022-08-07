@@ -19,7 +19,7 @@ Then, install the package in the environmet:
 pip install -r requirements.txt
 ```
 
-If the above program does not install all the packages eith
+If the above program does not install all the packages and exits with an error try : 
 - Add a `.` in front of the above command
 - On your linux system execute `sudo apt-get install build-essential `
 - On your linux system execute `sudo apt-get install Cmake`

@@ -25,7 +25,8 @@ config_bert_2_way = {
 	"batch_size"        :   1,
 	"num_warmup_steps"	: 	30,
 	"num_training_steps":	30000,
-	"token_padding"		:	128
+	"token_padding"		:	128,
+	"grad_iter"			:	1
 }
 
 config_bert_4_way = {
@@ -51,7 +52,8 @@ config_bert_4_way = {
 	"batch_size"        :   1,
 	"num_warmup_steps"	: 	30,
 	"num_training_steps":	30000,
-	"token_padding"		:	128
+	"token_padding"		:	128,
+	"grad_iter"			:	1
 }
 
 config_bert_6_way = {
@@ -77,7 +79,8 @@ config_bert_6_way = {
 	"batch_size"        :   1,
 	"num_warmup_steps"	: 	30,
 	"num_training_steps":	30000,
-	"token_padding"		:	128
+	"token_padding"		:	128,
+	"grad_iter"			:	1
 }
 
 
@@ -104,5 +107,6 @@ config_bert_12_way = {
 	"batch_size"        :   1,
 	"num_warmup_steps"	: 	30,
 	"num_training_steps":	30000,
-	"token_padding"		:	128
+	"token_padding"		:	128,
+	"grad_iter"			:	1
 }
