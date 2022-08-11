@@ -79,7 +79,7 @@ def myfunc(argv):
 		elif arg_model == "Hier_model":
 			pass
 		else:
-			print ("Invalid Model...")
+			print ("Invalid Model.....")
 			print ("Model options : ProtoBert, StrucShot and Hier_model")            
 
 
