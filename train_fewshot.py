@@ -31,14 +31,14 @@ def train(config, model,optimizer_func,scheduler,train_dataloader,validation_dat
 	for curr_epoch in range(0,config["max_epochs"]):
 		print ("Epoch number : ",(curr_epoch+1))
 
-		for support_batch,query_batch,every_class_present in train_dataloader:		
+		for support_batch,query_batch,every_class_present in train_dataloader:      
 			if every_class_present:
 				# training dataloader
 				curr_iter += 1
 
 				model.train()
 				pred,logits = model.forward(support_batch,query_batch)
-				ylabel 		= model.onehot_encoder(query_batch["label_ids"])
+				ylabel      = model.onehot_encoder(query_batch["label_ids"])
 				print ("logits : ",logits)
 				print ("ylabel : ",ylabel)
 				print ("pred :",pred)
@@ -57,7 +57,30 @@ def train(config, model,optimizer_func,scheduler,train_dataloader,validation_dat
 					#validation(config,model,validation_dataloader) 
 
 
+def train_standard(config,model,dataloader_fold,optimizer,epoch_scheduler):
+	metrics = []
+
+
+
+
+	for curr_epoch in range(0,config["max_epochs"]):
+		print("Epoch number : ",(curr_epoch+1))
+		for fold_num, fold in enumerate(dataloader_fold.get_folds()):
+			# we use folds for pubmet(pubmed is a bit larger so we need this workaround)
+			
+
+			train_batches,train_dev = fold.train, fold.dev
+
+			model.train()
+			for batch_num, batch in enumerate(train_batches):
+
+				output = model.forward(batch)
 				
+
+
+
+
+	return metrics,model
 
 
 

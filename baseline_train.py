@@ -9,6 +9,7 @@ sys.path.insert(0,'utils')
 sys.path.insert(0,'configs')
 sys.path.insert(0,'models')
 import dataload_fewshot
+import dataload_standard
 import train_fewshot
 
 import ProtoBert_config
@@ -19,9 +20,13 @@ import Hier_model
 import ProtoBert_model
 import StrucShot_model
 
+import ProtoBertHier_model
 
-from torch.utils.data import Dataset, DataLoader
-from transformers import AdamW, get_linear_schedule_with_warmup
+
+from torch.utils.data 			import Dataset, DataLoader
+from transformers 				import AdamW, get_linear_schedule_with_warmup
+from torch.optim 				import Adam
+from torch.optim.lr_scheduler 	import StepLR
 
 
 def myfunc(argv):
@@ -64,7 +69,7 @@ def myfunc(argv):
 			try:
 				config  = getattr(ProtoBert_config, arg_config)
 			except:
-				print("The config does not exist in ProtoBert_config")
+				print("The config does not exist in ProtoBert_config!")
 			
 			model 					= ProtoBert_model.ProtoBert(config)
 			optimizer_func  		= AdamW(model.parameters(),lr=config["lr"])
@@ -73,6 +78,20 @@ def myfunc(argv):
 			scheduler 				= get_linear_schedule_with_warmup(optimizer_func,num_warmup_steps=config["num_warmup_steps"],num_training_steps=config["num_training_steps"])
 			
 			model, metric  = train_fewshot.train(config, model,optimizer_func,scheduler,train_dataloader,validation_dataloader)
+		elif arg_model == "ProtoBert_Hier":
+			config = ""
+			try:
+				config = getattr(ProtoBert_config,arg_config)
+			except:
+				print ("The config does not exist in ProtoBert_config!")
+
+			dataloader_fold = dataload_standard.kalamkar_task(config['batch_size'], config['MAX_DOCS'], data_folder="datasets/kalamkar/inter",file_names=["train_format.txt","dev_format.txt",""])
+			model 			= ProtoBertHier_model.ProtoBertHier(config)			
+			optimizer 		= Adam(model.parameters(), lr=config["lr"])
+			epoch_scheduler = StepLR(optimizer, step_size=1, gamma=config["lr_epoch_decay"])
+
+
+			model,metrics = train_fewshot.train_standard(config,model,dataloader_fold,optimizer,epoch_scheduler)
 
 		elif arg_model == "StrucShot":
 			pass
