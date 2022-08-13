@@ -1,6 +1,9 @@
 import torch
 import math
 import copy
+import task_def
+
+
 
 from allennlp.common.util               import pad_sequence_to_length
 from allennlp.modules.seq2seq_encoders  import PytorchSeq2SeqWrapper
@@ -58,9 +61,11 @@ class ProtoBertHier(torch.nn.Module):
         self.config = config
 
     def all_classes_present(self,train_batch):
-        print (train_batch)
-        unique_vals = set(train_batch)
-        if len(unique_vals) == self.config["Labels"]:
+        #print (train_batch)
+        unique_vals = set(train_batch[0])
+        if len(list(unique_vals)) > 10:
+            print ("this is the length : ",len(list(unique_vals)))
+        if len(list(unique_vals)) == len(self.config["Labels"]):
             return True
         return False
 
@@ -68,7 +73,7 @@ class ProtoBertHier(torch.nn.Module):
     def forward(self, batch, labels=None, output_all_tasks=False):
 
 
-        if self.all_classes_present(labels) :
+        if self.all_classes_present(batch["label_ids"]) :
             documents, sentences, tokens = batch["input_ids"].shape
 
             print ("These are the : ",documents,sentences,tokens,batch.keys())
@@ -82,6 +87,14 @@ class ProtoBertHier(torch.nn.Module):
 
 
             bert_embeddings = torch.zeros(documents*sentences,tokens,768)
+            support_emb = torch.zeros(len(self.config["Labels"]),tokens,768)
+
+            class_label_names = task_def.KALAMKAR_TASK[batch["label_ids"]]
+            print ("This is the output : ",class_label_names)
+
+            
+
+
         else:
             return None
 
