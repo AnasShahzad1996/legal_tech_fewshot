@@ -1,3 +1,7 @@
 datasets/
 bert_models/
 wandb/
+*.pyc
+.vscode/
+__pycache__/
+.DS_Store
