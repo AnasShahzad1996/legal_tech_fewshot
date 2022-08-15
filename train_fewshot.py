@@ -34,7 +34,7 @@ def train(config, model,optimizer_func,scheduler,train_dataloader,validation_dat
 	losses = []
 	accuracies = []
 
-	for curr_epoch in range(0,3):
+	for curr_epoch in range(0,config["max_epochs"]):
 		print ("Epoch number : ",(curr_epoch+1))
 
 		prediction = []
@@ -82,8 +82,8 @@ def train(config, model,optimizer_func,scheduler,train_dataloader,validation_dat
 	print("F1 Scores: ", f1_scores)
 	print("Losses: ", losses)
 	print("Accuracies: ", accuracies)
-	plots.plot_f1_score(f1_scores, 3)
-	plots.plot_acc_loss(accuracies, losses, 3)
+	plots.plot_f1_score(f1_scores, config["max_epochs"])
+	plots.plot_acc_loss(accuracies, losses, config["max_epochs"])
 	
 def train_standard(config,model,dataloader_fold,optimizer,epoch_scheduler):
 	metrics = []
