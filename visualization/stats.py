@@ -103,8 +103,8 @@ def main():
 
 		train_generator = task_fewshot.DocumentsDataset('datasets/kalamkar/inter/train_format.txt',max_docs=-1)
 		doc_list=document_stats(train_generator,"Kalamkar dataset",task_def.KALAMKAR_LABELS)
-		
 
+		
 		read_dec=input("Do you want to read a particular document from the Kalamkar dataset(Y/n)?")
 		if read_dec == "n" or read_dec=="N":
 			print ("Exiting visualization")
@@ -137,10 +137,115 @@ def main():
 
 
 	elif curr_option =='2':
-		pass #to be implemented
-	elif curr_option == '3':
-		pass# to be implemented
+		print ("########################################")
+		print ("######### Paheli dataset  ############")
+		print ("########################################")
 
+		train_generator = task_fewshot.DocumentsDataset('datasets/paheli/inter/train_format.txt',max_docs=-1)
+		doc_list=document_stats(train_generator,"Paheli dataset",task_def.PAHELI_LABELS)
+		
+
+		read_dec=input("Do you want to read a particular document from the Paheli dataset(Y/n)?")
+		if read_dec == "n" or read_dec=="N":
+			print ("Exiting visualization")
+			return 0
+		Document_name = input("Enter document name : ")
+		f = open('datasets/paheli/inter/train.json')
+		data = json.load(f)
+		document_found = False
+		for curr_doc in data:
+			if curr_doc['id'] == int(Document_name):
+				document_found = True
+				for curr_sent in curr_doc['annotations'][0]["result"]:
+					print (curr_sent["value"]["text"])
+					print (" Label : ",curr_sent["value"]["labels"])
+					input("----- More ----")
+					print ("\033[A                             \033[A")
+					print ("\033[A                             \033[A")
+
+
+		for curr_doc in doc_list:
+			if curr_doc.doc_name == Document_name:
+				print ("Document stats : ")
+				table_final = tabulate.tabulate(zip(task_def.PAHELI_LABELS,curr_doc.sent_per_lab.tolist()),headers=["Labels","No of sentences"])
+				print (table_final)
+
+		if not document_found:
+			print ("Document not found")
+
+	elif curr_option == '3':
+		print ("########################################")
+		print ("######### Pubmed20k dataset  ############")
+		print ("########################################")
+
+		train_generator = task_fewshot.DocumentsDataset('datasets/pubmed20k/inter/train_format.txt',max_docs=-1)
+		doc_list=document_stats(train_generator,"Pubmed20k dataset",task_def.PUBMED_LABELS)
+		
+
+		read_dec=input("Do you want to read a particular document from the Pubmed20k dataset(Y/n)?")
+		if read_dec == "n" or read_dec=="N":
+			print ("Exiting visualization")
+			return 0
+		Document_name = input("Enter document name : ")
+		f = open('datasets/pubmed20k/inter/train.json')
+		data = json.load(f)
+		document_found = False
+		for curr_doc in data:
+			if curr_doc['id'] == int(Document_name):
+				document_found = True
+				for curr_sent in curr_doc['annotations'][0]["result"]:
+					print (curr_sent["value"]["text"])
+					print (" Label : ",curr_sent["value"]["labels"])
+					input("----- More ----")
+					print ("\033[A                             \033[A")
+					print ("\033[A                             \033[A")
+
+
+		for curr_doc in doc_list:
+			if curr_doc.doc_name == Document_name:
+				print ("Document stats : ")
+				table_final = tabulate.tabulate(zip(task_def.PUBMED_LABELS,curr_doc.sent_per_lab.tolist()),headers=["Labels","No of sentences"])
+				print (table_final)
+
+		if not document_found:
+			print ("Document not found")
+
+	elif curr_option == '4':
+		print ("########################################")
+		print ("######### Pubmed200k dataset  ############")
+		print ("########################################")
+
+		train_generator = task_fewshot.DocumentsDataset('datasets/pubmed200k/inter/train_format.txt',max_docs=-1)
+		doc_list=document_stats(train_generator,"Pubmed200k dataset",task_def.PUBMED_LABELS)
+		
+
+		read_dec=input("Do you want to read a particular document from the Pubmed20k dataset(Y/n)?")
+		if read_dec == "n" or read_dec=="N":
+			print ("Exiting visualization")
+			return 0
+		Document_name = input("Enter document name : ")
+		f = open('datasets/pubmed200k/inter/train.json')
+		data = json.load(f)
+		document_found = False
+		for curr_doc in data:
+			if curr_doc['id'] == int(Document_name):
+				document_found = True
+				for curr_sent in curr_doc['annotations'][0]["result"]:
+					print (curr_sent["value"]["text"])
+					print (" Label : ",curr_sent["value"]["labels"])
+					input("----- More ----")
+					print ("\033[A                             \033[A")
+					print ("\033[A                             \033[A")
+
+
+		for curr_doc in doc_list:
+			if curr_doc.doc_name == Document_name:
+				print ("Document stats : ")
+				table_final = tabulate.tabulate(zip(task_def.PUBMED_LABELS,curr_doc.sent_per_lab.tolist()),headers=["Labels","No of sentences"])
+				print (table_final)
+
+		if not document_found:
+			print ("Document not found")
 
 if __name__ == '__main__':
 	main()

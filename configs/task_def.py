@@ -19,7 +19,16 @@ PAHELI_LABELS_PRES = ["Argument", "Precedent", "Statute", "Facts", "Ratio of the
 
 PAHELI_TASK = "paheli/correct_format"
 
-#################################################################################
+############################################################################
+				# Pubmed labels
+############################################################################
+
+PUBMED_LABELS = ["Argument", "Precedent", "Statute", "Facts", "Ratio of the decision", "Ruling by Lower Court", "Ruling by Present Court"]
+
+PUBMED_LABELS_PRES = ["Argument", "Precedent", "Statute", "Facts", "Ratio of the decision", "Ruling by Lower Court", "Ruling by Present Court"]
+
+PUBMED_TASK = "pubmed"
+
 
 
 

@@ -8,7 +8,10 @@ sys.path.insert(0,'models')
 
 import wandb
 import torch
-
+from torch import cuda
+from sklearn.metrics import f1_score
+from statistics import mean
+from visualization import plots
 
 def validate(config, model,validation_dataloader):
 
@@ -27,9 +30,17 @@ def train(config, model,optimizer_func,scheduler,train_dataloader,validation_dat
 	curr_train_loss = 0.0
 	best_f1 = 0.0
 
+	f1_scores = []
+	losses = []
+	accuracies = []
 
-	for curr_epoch in range(0,config["max_epochs"]):
+	for curr_epoch in range(0,3):
 		print ("Epoch number : ",(curr_epoch+1))
+
+		prediction = []
+		ground_truth = []
+		loss_per_batch = []
+		accuracy_per_batch = []
 
 		for support_batch,query_batch,every_class_present in train_dataloader:      
 			if every_class_present:
@@ -39,14 +50,19 @@ def train(config, model,optimizer_func,scheduler,train_dataloader,validation_dat
 				model.train()
 				pred,logits = model.forward(support_batch,query_batch)
 				ylabel      = model.onehot_encoder(query_batch["label_ids"])
-				print ("logits : ",logits)
-				print ("ylabel : ",ylabel)
-				print ("pred :",pred)
+				#print ("logits : ",logits)
+				#print ("ylabel : ",ylabel)
+				#print ("pred :",pred)
 				loss = model.custom_loss(logits,ylabel.long()) / config["grad_iter"]
 				loss.backward()
-				
+
 				mask = pred.long() == ylabel.long()
 				accuracy = (torch.sum(mask) *100)/ len(pred)
+
+				prediction.append(pred.data)
+				ground_truth.append(ylabel.data)
+				loss_per_batch.append(loss.item())
+				accuracy_per_batch.append(accuracy.item())
 				wandb.log({"loss": loss,'accuracy':accuracy})
 
 
@@ -56,7 +72,19 @@ def train(config, model,optimizer_func,scheduler,train_dataloader,validation_dat
 					optimizer_func.zero_grad()
 					#validation(config,model,validation_dataloader) 
 
-
+		prediction = np.concatenate(prediction)
+		ground_truth = np.concatenate(ground_truth)
+		f1 = f1_score(prediction, ground_truth)
+		print("F1 Score for epoch ", curr_epoch+1, ": ", f1)
+		f1_scores.append(f1)
+		losses.append(mean(loss_per_batch))
+		accuracies.append(mean(accuracy_per_batch))
+	print("F1 Scores: ", f1_scores)
+	print("Losses: ", losses)
+	print("Accuracies: ", accuracies)
+	plots.plot_f1_score(f1_scores, 3)
+	plots.plot_acc_loss(accuracies, losses, 3)
+	
 def train_standard(config,model,dataloader_fold,optimizer,epoch_scheduler):
 	metrics = []
 
